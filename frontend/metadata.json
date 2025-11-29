@@ -1,0 +1,5 @@
+{
+  "name": "CulinaryScale",
+  "description": "A smart recipe manager that intelligently scales ingredients based on serving size, distinguishing between standard scaling and batch-constant ingredients.",
+  "requestFramePermissions": []
+}
