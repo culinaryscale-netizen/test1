@@ -23,6 +23,11 @@ app.use("/api/recipes", recipeRouter);
 // --- Serve frontend build (static) ---
 const frontendDist = path.join(__dirname, "../../frontend/dist");
 app.use(express.static(frontendDist));
+// Serve index.html for any non-/api route using a regex to avoid path-to-regexp parsing issues
+app.get(/^\/(?!api).*/, (_req, res) => {
+  res.sendFile(path.join(frontendDist, "index.html"));
+});
+
 
 // --- SPA fallback (use '/*' not '*' so path-to-regexp won't mis-parse) ---
 app.get("/*", (_req, res) => {
